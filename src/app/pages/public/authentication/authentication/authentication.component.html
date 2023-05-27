@@ -1,0 +1,33 @@
+<app-authentication-layout
+  [subtitle]="'Preencha suas credênciais para fazer login'"
+>
+  <form [formGroup]="form">
+    <fieldset [class.hasError]="email.touched && email.errors">
+      <label class="label">E-mail</label>
+      <input formControlName="email" class="input" />
+      <ng-container *ngIf="email.errors">
+        <span *ngIf="email.touched && email.hasError('required')">
+          Email é obrigatório
+        </span>
+        <span *ngIf="email.touched && email.hasError('email')">
+          Email inválido
+        </span>
+      </ng-container>
+    </fieldset>
+
+    <fieldset [class.hasError]="password.touched && password.errors">
+      <label class="label">Senha</label>
+      <input formControlName="password" class="input" />
+      <ng-container *ngIf="password.errors">
+        <span *ngIf="password.touched && password.hasError('required')">
+          Senha é obrigatória
+        </span>
+        <span *ngIf="password.touched && password.hasError('minlength')">
+          Senha deve ter no ínimo 6 caracteres
+        </span>
+      </ng-container>
+    </fieldset>
+  </form>
+
+  <button (click)="login()" class="primary-button mt-4">Entrar</button>
+</app-authentication-layout>

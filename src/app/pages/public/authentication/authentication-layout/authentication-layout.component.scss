@@ -1,0 +1,20 @@
+:host {
+    @apply h-screen flex justify-center items-center p-4
+}
+
+app-card {
+    @apply max-w-[25rem] w-full
+}
+
+h1 {
+    @apply font-bold text-center text-2xl
+}
+
+p {
+    @apply text-sm text-gray font-light text-center w-full 
+}
+
+div {
+    @apply my-4
+}
+

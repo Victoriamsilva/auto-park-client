@@ -1,5 +1,10 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "./typography.scss";
+@import "./button.scss";
+@import "./input.scss";
 
-@import "./typography.scss"
+body {
+    @apply bg-bage w-screen h-screen
+}

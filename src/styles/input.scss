@@ -1,0 +1,24 @@
+.input {
+  @apply h-8 w-full rounded-md border border-gray-light outline-none p-2;
+}
+
+.label {
+  @apply text-xs text-gray;
+}
+
+fieldset {
+  @apply mb-2;
+  span {
+    @apply text-red text-xs;
+  }
+
+  &.hasError {
+    input {
+      @apply border-red;
+    }
+
+    label {
+      @apply text-red;
+    }
+  }
+}
