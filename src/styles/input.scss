@@ -1,13 +1,14 @@
-.input {
-  @apply h-8 w-full rounded-md border border-gray-light outline-none p-2;
-}
-
-.label {
-  @apply text-xs text-gray;
-}
-
 fieldset {
   @apply mb-2;
+
+  input {
+    @apply h-10 w-full rounded-lg border border-gray outline-none p-2 focus:border-primary;
+  }
+
+  label {
+    @apply text-xs text-gray;
+  }
+
   span {
     @apply text-red text-xs;
   }

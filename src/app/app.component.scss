@@ -1,0 +1,8 @@
+.wrapper {
+    @apply absolute inset-0 flex;
+}
+
+main {
+    flex-grow: 2;
+    @apply overflow-x-hidden overflow-y-auto min-h-screen px-4 md:px-8;
+}

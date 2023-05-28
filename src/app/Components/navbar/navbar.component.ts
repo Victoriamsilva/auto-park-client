@@ -14,12 +14,8 @@ export class NavbarComponent {
   title: string = 'AutoPark';
   navLinks: NavLink[] = [
     {
-      path: 'entrance',
-      name: 'Entrada',
-    },
-    {
-      path: 'exit',
-      name: 'Saída',
+      path: '',
+      name: 'Home',
     },
   ];
 }

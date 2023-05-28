@@ -14,16 +14,9 @@ const routes: Routes = [
     canActivate: [authenticationGuard],
     children: [
       {
-        path: 'entrance',
+        path: '',
         loadChildren: () =>
-          import('./pages/private/entrance/entrance.module').then(
-            (m) => m.EntranceModule
-          ),
-      },
-      {
-        path: 'exit',
-        loadChildren: () =>
-          import('./pages/private/exit/exit.module').then((m) => m.ExitModule),
+          import('./pages/private/home/home.module').then((m) => m.HomeModule),
       },
     ],
   },

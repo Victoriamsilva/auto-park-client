@@ -1,3 +1,29 @@
 :host {
-   @apply flex justify-between items-center px-4 py-3 bg-gray text-white text-sm;
+   @apply select-none h-screen bg-black flex flex-col text-gray rounded-tr-lg rounded-br-lg;
+   width: 250px;
+ 
+   .header {
+     @apply px-4 py-6 flex items-center text-white mb-4;
+     .icon {
+       @apply rounded-lg h-10 w-10 bg-primary text-black flex items-center justify-center mr-3;
+     }
+     h3 {
+       @apply font-semibold m-0;
+     }
+   }
+ 
+   nav {
+     @apply flex-grow flex flex-col overflow-x-hidden overflow-y-auto;
+   }
+ 
+   ul {
+     @apply flex flex-col gap-3 mx-4;
+     li {
+       @apply cursor-pointer rounded-lg px-5 py-3 hover:bg-black-light hover:text-white;
+       &.active {
+         @apply text-black bg-primary;
+      }
 }
+   }
+ }
+ 

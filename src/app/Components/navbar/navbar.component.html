@@ -1,9 +1,11 @@
-<h1>{{ title }}</h1>
-
+<div class="header">
+  <div class="icon">X</div>
+  <h3>Auto Park</h3>
+</div>
 <nav>
-  <ul class="flex gap-4">
+  <ul>
     <li *ngFor="let item of navLinks">
-      <a [routerLink]="item.path" routerLinkActive="text-teal-400">
+      <a [routerLink]="item.path" routerLinkActive="active">
         {{ item.name }}
       </a>
     </li>

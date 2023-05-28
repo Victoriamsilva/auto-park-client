@@ -4,7 +4,8 @@
 @import "./typography.scss";
 @import "./button.scss";
 @import "./input.scss";
+@import "./table.scss";
 
 body {
-    @apply bg-bage w-screen h-screen
+    @apply w-screen h-screen
 }

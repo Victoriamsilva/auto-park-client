@@ -23,8 +23,7 @@ export class AuthenticationService {
     });
     localStorage.setItem('token', data.token);
     localStorage.setItem('user', JSON.stringify(data));
-    console.log('aaaaaa', this.isLoggedIn);
-    this.router.navigateByUrl('/entrance');
+    this.router.navigateByUrl('/');
   }
 
   logout() {
