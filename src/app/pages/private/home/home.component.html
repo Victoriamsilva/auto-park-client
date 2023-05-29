@@ -1,5 +1,5 @@
 <app-header></app-header>
-<div class="table-wrapper">
+<div *ngIf="vehiclesParked.length > 0" class="table-wrapper">
   <table>
     <thead>
       <tr>
@@ -7,21 +7,25 @@
         <th>Modelo</th>
         <th>Placa</th>
         <th>Tipo</th>
+        <th>Dia de entrada</th>
         <th>Horário de entrada</th>
         <th>Valor atual</th>
         <th></th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <td>Marcos</td>
-        <td>celta</td>
-        <td>ABC-1234</td>
-        <td>Carro</td>
-        <td>10:00</td>
-        <td>R$ 10,00</td>
+      <tr *ngFor="let vehicle of vehiclesParked">
+        <td>{{ vehicle.client.name }}</td>
+        <td>{{ vehicle.vehicle.name }}</td>
+        <td>{{ vehicle.vehicle.licensePlate }}</td>
+        <td>{{ vehicle.vehicle.type.name }}</td>
         <td>
-          <button class="secondary-button">Saída</button>
+          {{ getBeginDate(vehicle.begin) }}
+        </td>
+        <td>{{ getBeginHour(vehicle.begin) }}</td>
+        <td>{{ getPricing(vehicle.begin, vehicle.vehicle.type.price) }}</td>
+        <td>
+          <button class="btn-ghost">Saída</button>
         </td>
       </tr>
     </tbody>
