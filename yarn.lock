@@ -125,10 +125,10 @@
     "ora" "5.4.1"
     "rxjs" "7.8.1"
 
-"@angular/animations@^16.0.0":
-  "integrity" "sha512-fmqMD/8IoI5YosT7xabt0Hq6Zotxwv7ajKHX4f8KG/L/PAgnH5S6g2+sEJcZwm6/7dUNfXNcUL2978LxVT8GDQ=="
-  "resolved" "https://registry.npmjs.org/@angular/animations/-/animations-16.0.2.tgz"
-  "version" "16.0.2"
+"@angular/animations@^16.0.3":
+  "integrity" "sha512-YKy3ECR3+Os1viw3FhBJ+pUqPTACGB1sxeZ2LYCX8LLynpetQ/yQQWQUYDGXEZQJrXlnnDS8QDlebEIvk1hCcQ=="
+  "resolved" "https://registry.npmjs.org/@angular/animations/-/animations-16.0.3.tgz"
+  "version" "16.0.3"
   dependencies:
     "tslib" "^2.3.0"
 
@@ -4450,6 +4450,13 @@
   "integrity" "sha512-bn5wdvH6QQ2JGu4TgUbozdULBFMxZNPNTgO7dRiosx9FRrFvKcgxkGSgU/xoj+4kP1vgh8zwzaiDfvH/Bfb+Aw=="
   "resolved" "https://registry.npmjs.org/ngx-bootstrap/-/ngx-bootstrap-10.2.0.tgz"
   "version" "10.2.0"
+  dependencies:
+    "tslib" "^2.3.0"
+
+"ngx-toastr@^17.0.2":
+  "integrity" "sha512-KehiPx6bkbiUyJbabf0ZA04+ASumS8r/y4wPsUOMI9OrBvBcfq27UQmWuQKoVR8E+9y4Pq7eZkSg2kvxNvpxTA=="
+  "resolved" "https://registry.npmjs.org/ngx-toastr/-/ngx-toastr-17.0.2.tgz"
+  "version" "17.0.2"
   dependencies:
     "tslib" "^2.3.0"
 

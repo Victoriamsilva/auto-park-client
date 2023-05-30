@@ -19,8 +19,12 @@
         <td>{{ client.cpf }}</td>
         <td>{{ client.email }}</td>
         <td class="justify-center">
-          <button class="btn-ghost">Editar</button>
-          <button class="btn-ghost">Excluir</button>
+          <button class="btn-ghost" (click)="openModalEdit(client)">
+            Editar
+          </button>
+          <button class="btn-danger" (click)="openModalRemove(client.id)">
+            Excluir
+          </button>
         </td>
       </tr>
     </tbody>

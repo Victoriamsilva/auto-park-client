@@ -1,0 +1,52 @@
+<div class="custom-modal">
+  <header class="custom-modal-header">
+    <h5>Cliente</h5>
+  </header>
+
+  <main class="custom-modal-body">
+    <h1>Edição de cliente</h1>
+
+    <form [formGroup]="form">
+      <fieldset [class.hasError]="name.touched && name.errors">
+        <label class="label">Nome</label>
+        <input formControlName="name" class="input" />
+        <ng-container *ngIf="email.errors">
+          <span class="error" *ngIf="name.touched && name.hasError('required')">
+            Nome é obrigatório
+          </span>
+        </ng-container>
+      </fieldset>
+
+      <fieldset [class.hasError]="email.touched && email.errors">
+        <label class="label">E-mail</label>
+        <input formControlName="email" class="input" />
+        <ng-container *ngIf="email.errors">
+          <span
+            class="error"
+            *ngIf="email.touched && email.hasError('required')"
+          >
+            Email é obrigatório
+          </span>
+          <span class="error" *ngIf="email.touched && email.hasError('email')">
+            Email inválido
+          </span>
+        </ng-container>
+      </fieldset>
+
+      <fieldset [class.hasError]="cpf.touched && cpf.errors">
+        <label class="label">Cpf</label>
+        <input formControlName="cpf" class="input" />
+        <ng-container *ngIf="cpf.errors">
+          <span class="error" *ngIf="cpf.touched && cpf.hasError('required')">
+            Cpf é obrigatório
+          </span>
+        </ng-container>
+      </fieldset>
+    </form>
+  </main>
+
+  <footer class="custom-modal-footer">
+    <button class="btn-secondary" (click)="closeModal()">Cancelar</button>
+    <button class="btn-primary" (click)="editClient()">Confirmar</button>
+  </footer>
+</div>

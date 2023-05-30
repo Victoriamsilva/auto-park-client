@@ -21,4 +21,12 @@ export class ClientsService {
   async createClient(client: any) {
     return this.http.post(`${this.baseUrl}/clients`, client);
   }
+
+  async editClient(client: any) {
+    return this.http.patch(`${this.baseUrl}/clients/${client.id}`, client);
+  }
+
+  async removeClient(id: number) {
+    return this.http.delete(`${this.baseUrl}/clients/${id}`);
+  }
 }

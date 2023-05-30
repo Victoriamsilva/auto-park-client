@@ -8,6 +8,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { ModalModule } from 'ngx-bootstrap/modal';
 import { SharedModule } from './shared/shared.module';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [AppComponent, NavbarComponent],
@@ -17,6 +19,8 @@ import { SharedModule } from './shared/shared.module';
     HttpClientModule,
     ModalModule.forRoot(),
     SharedModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

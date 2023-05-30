@@ -8,7 +8,6 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full',
   },
-
   {
     path: '',
     canActivate: [authenticationGuard],
@@ -23,6 +22,13 @@ const routes: Routes = [
         loadChildren: () =>
           import('./pages/private/clients/clients.module').then(
             (m) => m.ClientsModule
+          ),
+      },
+      {
+        path: 'vehicles',
+        loadChildren: () =>
+          import('./pages/private/vehicles/vehicles.module').then(
+            (m) => m.VehiclesModule
           ),
       },
     ],

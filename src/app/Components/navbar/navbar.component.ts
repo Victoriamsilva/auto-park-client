@@ -21,5 +21,9 @@ export class NavbarComponent {
       path: 'clients',
       name: 'Clientes',
     },
+    {
+      path: 'vehicles',
+      name: 'Veículos',
+    },
   ];
 }

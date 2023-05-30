@@ -1,1 +1,27 @@
-<p>vehicles works!</p>
+<app-header
+  (onClick)="openModal()"
+  title="Clientes cadastrados"
+  buttonLabel="Adicionar"
+></app-header>
+<div *ngIf="types.length > 0" class="table-wrapper">
+  <table>
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Preço</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let client of types">
+        <td>{{ client.name }}</td>
+        <td>{{ client.cpf }}</td>
+        <td>{{ client.email }}</td>
+        <td class="justify-center">
+          <button class="btn-ghost">Editar</button>
+          <button class="btn-ghost">Excluir</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

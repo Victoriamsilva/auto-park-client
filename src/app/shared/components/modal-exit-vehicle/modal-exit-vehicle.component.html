@@ -1,0 +1,51 @@
+<div class="custom-modal">
+  <header class="custom-modal-header">
+    <h5>Saída de veículo</h5>
+  </header>
+
+  <main class="custom-modal-body">
+    <h1>Confirma a saída do veículo e o valor pago?</h1>
+
+    <div class="info">
+      <div>
+        <label>Nome do cliente: </label>
+        <span>{{ data.client.name }}</span>
+      </div>
+
+      <div>
+        <label>CPF do cliente: </label>
+        <span>{{ data.client.cpf }}</span>
+      </div>
+
+      <div>
+        <label class="text-lg">Placa do veículo: </label>
+        <span>{{ data.vehicle.licensePlate }}</span>
+      </div>
+
+      <div>
+        <label>Tipo do veículo: </label>
+        <span>{{ data.vehicle.type.name }}</span>
+      </div>
+
+      <div>
+        <label>Valor da hora: </label>
+        <span>{{ data.vehicle.type.price }}</span>
+      </div>
+
+      <div>
+        <label>Tempo de permanência: </label>
+        <span>{{ data.time }}</span>
+      </div>
+
+      <div>
+        <label>Valor a pagar: </label>
+        <span>{{ getPricing() }}</span>
+      </div>
+    </div>
+  </main>
+
+  <footer class="custom-modal-footer">
+    <button class="btn-secondary" (click)="closeModal()">Cancelar</button>
+    <button class="btn-primary" (click)="exitVehicle()">Confirmar</button>
+  </footer>
+</div>

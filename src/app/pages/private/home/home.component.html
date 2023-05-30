@@ -29,7 +29,9 @@
         <td>{{ getBeginHour(vehicle.begin) }}</td>
         <td>{{ getPricing(vehicle.begin, vehicle.vehicle.type.price) }}</td>
         <td>
-          <button class="btn-ghost">Saída</button>
+          <button class="btn-ghost" (click)="exitVehicle(vehicle)">
+            Saída
+          </button>
         </td>
       </tr>
     </tbody>

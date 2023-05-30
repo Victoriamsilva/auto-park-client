@@ -1,0 +1,9 @@
+.info {
+    @apply flex flex-col border border-solid border-gray rounded-lg p-4;
+
+    div  {
+        border-bottom: gray 1px solid;
+        @apply flex justify-between p-4;
+    }
+
+}
