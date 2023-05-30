@@ -1,4 +1,8 @@
-<app-header></app-header>
+<app-header
+  (onClick)="openModal()"
+  title="Veículos estacionados"
+  buttonLabel="Adicionar"
+></app-header>
 <div *ngIf="vehiclesParked.length > 0" class="table-wrapper">
   <table>
     <thead>

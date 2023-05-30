@@ -9,7 +9,7 @@
         <span *ngIf="email.touched && email.hasError('required')">
           Email é obrigatório
         </span>
-        <span *ngIf="email.touched && email.hasError('email')">
+        <span class="error" *ngIf="email.touched && email.hasError('email')">
           Email inválido
         </span>
       </ng-container>
@@ -19,10 +19,16 @@
       <label class="label">Senha</label>
       <input formControlName="password" class="input" />
       <ng-container *ngIf="password.errors">
-        <span *ngIf="password.touched && password.hasError('required')">
+        <span
+          class="error"
+          *ngIf="password.touched && password.hasError('required')"
+        >
           Senha é obrigatória
         </span>
-        <span *ngIf="password.touched && password.hasError('minlength')">
+        <span
+          class="error"
+          *ngIf="password.touched && password.hasError('minlength')"
+        >
           Senha deve ter no ínimo 6 caracteres
         </span>
       </ng-container>

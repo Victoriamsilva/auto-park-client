@@ -2,14 +2,14 @@ fieldset {
   @apply mb-2;
 
   input {
-    @apply h-10 w-full rounded-lg border border-gray outline-none p-2 focus:border-primary;
+    @apply w-full rounded-lg border border-gray outline-none p-2 focus:border-primary;
   }
 
   label {
     @apply text-xs text-gray;
   }
 
-  span {
+  span.error {
     @apply text-red text-xs;
   }
 
@@ -22,4 +22,8 @@ fieldset {
       @apply text-red;
     }
   }
+}
+
+.ng-dropdown-panel {
+  z-index: 9999 !important;
 }

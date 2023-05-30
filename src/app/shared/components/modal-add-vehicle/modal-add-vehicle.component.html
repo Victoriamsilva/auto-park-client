@@ -1,0 +1,39 @@
+<div class="custom-modal">
+  <header class="custom-modal-header">
+    <h5>Adicionar entrada de veículo</h5>
+  </header>
+
+  <main class="custom-modal-body">
+    <h1>Selecione um cliente</h1>
+
+    <div class="grid gap-4 grid-cols-1">
+      <fieldset>
+        <label for="">Cliente</label>
+        <ng-select
+          [items]="clients"
+          bindLabel="name"
+          bindValue="id"
+          appendTo="body"
+          [(ngModel)]="selectedClient"
+          (change)="getVehicles()"
+        ></ng-select>
+      </fieldset>
+      <fieldset>
+        <label for="">Veículo</label>
+        <ng-select
+          [items]="vehicles"
+          bindLabel="name"
+          bindValue="id"
+          appendTo="body"
+          [disabled]="!selectedClient"
+          [(ngModel)]="selectedVehicle"
+        ></ng-select>
+      </fieldset>
+    </div>
+  </main>
+
+  <footer class="custom-modal-footer">
+    <button class="btn-secondary" (click)="closeModal()">Cancelar</button>
+    <button class="btn-primary" (click)="addVehicle()">Adicionar</button>
+  </footer>
+</div>

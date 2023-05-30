@@ -2,9 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 @import "./typography.scss";
+@import "~@ng-select/ng-select/themes/default.theme.css";
 @import "./button.scss";
 @import "./input.scss";
 @import "./table.scss";
+@import "./modal.scss";
 
 body {
     @apply w-screen h-screen

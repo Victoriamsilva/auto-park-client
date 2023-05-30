@@ -18,6 +18,13 @@ const routes: Routes = [
         loadChildren: () =>
           import('./pages/private/home/home.module').then((m) => m.HomeModule),
       },
+      {
+        path: 'clients',
+        loadChildren: () =>
+          import('./pages/private/clients/clients.module').then(
+            (m) => m.ClientsModule
+          ),
+      },
     ],
   },
   {

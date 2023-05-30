@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { VehiclesService } from 'src/app/services/vehicles.service';
 import * as moment from 'moment';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { ModalAddVehicleComponent } from 'src/app/shared/components/modal-add-vehicle/modal-add-vehicle.component';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +12,10 @@ import * as moment from 'moment';
 export class HomeComponent {
   vehiclesParked: any[] = [];
 
-  constructor(private vehiclesService: VehiclesService) {}
+  constructor(
+    private vehiclesService: VehiclesService,
+    private modalService: BsModalService
+  ) {}
 
   async ngOnInit() {
     const res: any = await this.vehiclesService.getVehiclesParked();
@@ -32,10 +37,13 @@ export class HomeComponent {
       .duration(endDate.diff(beginDate))
       .add(3, 'hours')
       .asHours();
-    console.log(duration);
-
-    console.log(duration);
     const price = duration * priceHour;
     return price.toFixed(2);
+  }
+
+  openModal() {
+    this.modalService.show(ModalAddVehicleComponent, {
+      class: 'custom-modal-sm',
+    });
   }
 }

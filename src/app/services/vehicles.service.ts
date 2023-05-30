@@ -7,11 +7,21 @@ import { Router } from '@angular/router';
   providedIn: 'root',
 })
 export class VehiclesService {
-  baseUrl = environment.historyApi;
+  historyApi = environment.historyApi;
+  baseUrl = environment.api;
+  eventsApi = environment.eventsApi;
 
   constructor(private http: HttpService, private router: Router) {}
 
   async getVehiclesParked() {
-    return this.http.get(`${this.baseUrl}/history/parked`);
+    return this.http.get(`${this.historyApi}/history/parked`);
+  }
+
+  async getVehiclesByClientId(clientId: string) {
+    return this.http.get(`${this.baseUrl}/vehicles/${clientId}`);
+  }
+
+  async addVehicle(data: any) {
+    return this.http.post(`${this.historyApi}/history`, data);
   }
 }

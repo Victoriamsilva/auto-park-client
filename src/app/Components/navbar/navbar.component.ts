@@ -17,5 +17,9 @@ export class NavbarComponent {
       path: '',
       name: 'Home',
     },
+    {
+      path: 'clients',
+      name: 'Clientes',
+    },
   ];
 }

@@ -1,0 +1,99 @@
+<div class="custom-modal">
+  <header class="custom-modal-header">
+    <h5>Novo cliente</h5>
+  </header>
+
+  <main class="custom-modal-body">
+    <h1>Adicione as informações do cliente</h1>
+    <form [formGroup]="form">
+      <fieldset [class.hasError]="name.touched && name.errors">
+        <label class="label">Nome</label>
+        <input formControlName="name" class="input" />
+        <ng-container *ngIf="email.errors">
+          <span class="error" *ngIf="name.touched && name.hasError('required')">
+            Nome é obrigatório
+          </span>
+        </ng-container>
+      </fieldset>
+
+      <fieldset [class.hasError]="email.touched && email.errors">
+        <label class="label">E-mail</label>
+        <input formControlName="email" class="input" />
+        <ng-container *ngIf="email.errors">
+          <span
+            class="error"
+            *ngIf="email.touched && email.hasError('required')"
+          >
+            Email é obrigatório
+          </span>
+          <span class="error" *ngIf="email.touched && email.hasError('email')">
+            Email inválido
+          </span>
+        </ng-container>
+      </fieldset>
+
+      <fieldset [class.hasError]="cpf.touched && cpf.errors">
+        <label class="label">Cpf</label>
+        <input formControlName="cpf" class="input" />
+        <ng-container *ngIf="cpf.errors">
+          <span class="error" *ngIf="cpf.touched && cpf.hasError('required')">
+            Cpf é obrigatório
+          </span>
+        </ng-container>
+      </fieldset>
+
+      <fieldset [class.hasError]="vehicleType.touched && vehicleType.errors">
+        <label class="label">Tipo de veículo</label>
+        <ng-select
+          formControlName="vehicleType"
+          [items]="types"
+          bindLabel="name"
+          bindValue="id"
+          appendTo="body"
+          formControlName="vehicleType"
+        ></ng-select>
+        <ng-container *ngIf="vehicleType.errors">
+          <span
+            class="error"
+            *ngIf="vehicleType.touched && vehicleType.hasError('required')"
+          >
+            Tipo de veículo é obrigatório
+          </span>
+        </ng-container>
+      </fieldset>
+
+      <fieldset [class.hasError]="vehicleName.touched && vehicleName.errors">
+        <label class="label">Modelo do veículo</label>
+        <input formControlName="vehicleName" class="input" />
+        <ng-container *ngIf="vehicleName.errors">
+          <span
+            class="error"
+            *ngIf="vehicleName.touched && vehicleName.hasError('required')"
+          >
+            Modelo é obrigatório
+          </span>
+        </ng-container>
+      </fieldset>
+
+      <fieldset [class.hasError]="licensePlate.touched && licensePlate.errors">
+        <label class="label">Placa do veículo</label>
+        <input formControlName="licensePlate" class="input" />
+        <ng-container *ngIf="licensePlate.errors">
+          <span
+            class="error"
+            *ngIf="licensePlate.touched && licensePlate.hasError('required')"
+          >
+            Placa do veículo é obrigatório
+          </span>
+        </ng-container>
+      </fieldset>
+    </form>
+
+    <div class="grid gap-4 grid-cols-1"></div>
+  </main>
+
+  <footer class="custom-modal-footer">
+    <button class="btn-secondary" (click)="closeModal()">Cancelar</button>
+    <button class="btn-primary" (click)="createClient()">Adicionar</button>
+  </footer>
+</div>
