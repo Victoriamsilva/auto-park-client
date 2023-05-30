@@ -39,6 +39,10 @@ export class ModalCreateClientComponent {
     return this.form.get('licensePlate');
   }
 
+  get isParked() {
+    return this.form.get('isParked');
+  }
+
   constructor(
     private clientsService: ClientsService,
     private vehiclesService: VehiclesService,
@@ -50,15 +54,38 @@ export class ModalCreateClientComponent {
     this.form = this.formBuilder.group({
       name: new FormControl('', [Validators.required]),
       email: new FormControl('', [Validators.required, Validators.email]),
-      cpf: new FormControl('', [Validators.required, Validators.email]),
+      cpf: new FormControl('', [Validators.required]),
       vehicleName: new FormControl('', [Validators.required]),
       vehicleType: new FormControl('', [Validators.required]),
       licensePlate: new FormControl('', [Validators.required]),
+      isParked: new FormControl(false),
     });
   }
 
   async createClient() {
-    const res: any = await this.eventService.createClient({});
+    const client = {
+      name: this.name.value,
+      email: this.email.value,
+      cpf: this.cpf.value,
+    };
+
+    const vehicle = {
+      name: this.vehicleName.value,
+      type: {
+        id: this.vehicleType.value,
+      },
+      licensePlate: this.licensePlate.value,
+    };
+
+    const res: any = await this.eventService.createClient({
+      client,
+      vehicle,
+      createHistory: this.isParked.value,
+    });
+
+    if (res) {
+      this.modalRef.hide();
+    }
   }
 
   async ngOnInit() {

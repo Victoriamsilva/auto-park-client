@@ -23,7 +23,7 @@ export class HomeComponent {
   }
 
   getBeginHour(date: string) {
-    return moment(date).subtract(3, 'hours').format('HH:mm');
+    return moment(date).format('HH:mm');
   }
 
   getBeginDate(date: Date) {
@@ -33,10 +33,7 @@ export class HomeComponent {
   getPricing(date: Date, priceHour: number) {
     const beginDate = moment(date);
     const endDate = moment();
-    const duration = moment
-      .duration(endDate.diff(beginDate))
-      .add(3, 'hours')
-      .asHours();
+    const duration = moment.duration(endDate.diff(beginDate)).asHours();
     const price = duration * priceHour;
     return price.toFixed(2);
   }
