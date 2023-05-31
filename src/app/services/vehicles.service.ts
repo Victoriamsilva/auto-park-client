@@ -25,7 +25,6 @@ export class VehiclesService {
   }
 
   async editVehicle(id: any, data: any) {
-    console.log(id, data);
     return this.http.patch(`${this.baseUrl}/vehicles/${id}`, data);
   }
 

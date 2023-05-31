@@ -63,7 +63,6 @@ export class ModalEditVehicleComponent {
 
   async ngOnInit() {
     await this.getTypes();
-    console.log(this.vehicle);
 
     this.form.patchValue({
       ...this.vehicle,

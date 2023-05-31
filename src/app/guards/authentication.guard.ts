@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 export const authenticationGuard = async () => {
   const authService = inject(AuthenticationService);
   const router = inject(Router);
-  console.log(authService.isLoggedIn);
 
   if (!authService.isLoggedIn) {
     router.navigateByUrl('/authentication');
