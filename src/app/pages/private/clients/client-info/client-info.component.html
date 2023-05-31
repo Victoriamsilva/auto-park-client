@@ -1,0 +1,81 @@
+<div class="client-info">
+  <div>
+    <h1>Informações do cliente</h1>
+    <button class="btn-ghost" (click)="openModalEditClient()">Editar</button>
+  </div>
+  <div>
+    <label>Nome do cliente: </label>
+    <span>{{ client.name }}</span>
+  </div>
+
+  <div>
+    <label>CPF do cliente: </label>
+    <span>{{ client.cpf }}</span>
+  </div>
+</div>
+<app-tabs>
+  <app-tab-item [tabTitle]="'Veículos'">
+    <div class="flex my-4 justify-between items-center">
+      <h2 class="m-0">Veículos do cliente</h2>
+      <button class="btn-primary" (click)="openModalCreateVehicle()">
+        Adicionar
+      </button>
+    </div>
+    <div *ngIf="vehicles.length > 0" class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Preço</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let vehicle of vehicles">
+            <td>{{ vehicle.name }}</td>
+            <td>{{ vehicle.type.price }}</td>
+            <td class="justify-center">
+              <button class="btn-ghost" (click)="openModalEdit(vehicle)">
+                Editar
+              </button>
+              <button class="btn-ghost" (click)="openModalDelete(vehicle.id)">
+                Excluir
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </app-tab-item>
+  <app-tab-item [tabTitle]="'Historico'">
+    <div class="my-4">
+      <h2>Histórico do cliente</h2>
+    </div>
+    <div *ngIf="vehicles.length > 0" class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Dia de entrada</th>
+            <th>Horário de entrada</th>
+            <th>Horario de saída</th>
+            <th>Placa</th>
+            <th>Modelo</th>
+            <th>Tipo</th>
+            <th>Valor pago</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let history of historyClient">
+            <td>{{ getDate(history.begin) }}</td>
+            <td>{{ getHour(history.begin) }}</td>
+            <td>{{ getHour(history.end) }}</td>
+            <td>{{ history.vehicle.licensePlate }}</td>
+            <td>{{ history.vehicle.name }}</td>
+            <td>{{ history.vehicle.type.name }}</td>
+            <td>{{ history.price }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </app-tab-item>
+</app-tabs>

@@ -1,0 +1,10 @@
+.client-info {
+    div {
+        @apply flex justify-between;
+        max-width: 30%;
+    }
+    h1 {
+      @apply mb-0;
+}
+}
+

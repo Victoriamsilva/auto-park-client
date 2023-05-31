@@ -1,5 +1,6 @@
 :host {
-    @apply h-screen flex justify-center items-center p-4
+    @apply h-screen flex justify-center items-center p-4 bg-primary-light;
+    border: 10px dashed white;
 }
 
 app-card {

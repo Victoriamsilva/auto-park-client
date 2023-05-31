@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 interface NavLink {
   path: string;
@@ -23,7 +24,14 @@ export class NavbarComponent {
     },
     {
       path: 'vehicles',
-      name: 'Veículos',
+      name: 'Tipos de veículos',
     },
   ];
+
+  constructor(private router: Router) {}
+
+  logout() {
+    localStorage.removeItem('token');
+    this.router.navigateByUrl('/authentication');
+  }
 }

@@ -1,6 +1,6 @@
 <app-header
   (onClick)="openModal()"
-  title="Clientes cadastrados"
+  title="Tipos de veiculo"
   buttonLabel="Adicionar"
 ></app-header>
 <div *ngIf="types.length > 0" class="table-wrapper">
@@ -13,13 +13,16 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let client of types">
-        <td>{{ client.name }}</td>
-        <td>{{ client.cpf }}</td>
-        <td>{{ client.email }}</td>
+      <tr *ngFor="let type of types">
+        <td>{{ type.name }}</td>
+        <td>{{ type.price }}</td>
         <td class="justify-center">
-          <button class="btn-ghost">Editar</button>
-          <button class="btn-ghost">Excluir</button>
+          <button class="btn-ghost" (click)="openModalEdit(type)">
+            Editar
+          </button>
+          <button class="btn-ghost" (click)="openModalDelete(type)">
+            Excluir
+          </button>
         </td>
       </tr>
     </tbody>

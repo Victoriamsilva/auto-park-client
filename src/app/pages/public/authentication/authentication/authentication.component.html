@@ -6,7 +6,7 @@
       <label class="label">E-mail</label>
       <input formControlName="email" class="input" />
       <ng-container *ngIf="email.errors">
-        <span *ngIf="email.touched && email.hasError('required')">
+        <span *ngIf="email.touched && email.hasError('required')" class="error">
           Email é obrigatório
         </span>
         <span class="error" *ngIf="email.touched && email.hasError('email')">
@@ -17,7 +17,7 @@
 
     <fieldset [class.hasError]="password.touched && password.errors">
       <label class="label">Senha</label>
-      <input formControlName="password" class="input" />
+      <input formControlName="password" class="input" type="password" />
       <ng-container *ngIf="password.errors">
         <span
           class="error"
@@ -35,5 +35,5 @@
     </fieldset>
   </form>
 
-  <button (click)="login()" class="primary-button mt-4">Entrar</button>
+  <button (click)="login()" class="btn-primary mt-4 w-full">Entrar</button>
 </app-authentication-layout>

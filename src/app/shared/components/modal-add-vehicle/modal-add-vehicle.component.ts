@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { BsModalRef } from 'ngx-bootstrap/modal';
+import { ToastrService } from 'ngx-toastr';
 import { ClientsService } from 'src/app/services/clients.service';
+import { HistoryService } from 'src/app/services/history.service';
 import { VehiclesService } from 'src/app/services/vehicles.service';
 
 @Component({
@@ -9,6 +11,7 @@ import { VehiclesService } from 'src/app/services/vehicles.service';
   styleUrls: ['./modal-add-vehicle.component.scss'],
 })
 export class ModalAddVehicleComponent {
+  @Output() onCreate = new EventEmitter();
   clients: any[] = [];
   vehicles: any[] = [];
   selectedClient: any = null;
@@ -17,45 +20,66 @@ export class ModalAddVehicleComponent {
   constructor(
     private clientsService: ClientsService,
     private vehiclesService: VehiclesService,
-    private modalRef: BsModalRef
+    private historyService: HistoryService,
+    private modalRef: BsModalRef,
+    private toastr: ToastrService
   ) {}
 
   async ngOnInit() {
-    const clients: any = await this.clientsService.getClients();
-    this.clients = clients;
-    return clients;
+    await this.getClients();
+  }
+
+  async getClients() {
+    try {
+      const clients: any = await this.clientsService.getClients();
+      this.clients = clients;
+    } catch (error) {
+      this.toastr.error('Erro ao buscar clientes', 'Erro!');
+    }
   }
 
   async searchClients(search?: string) {
-    const clients: any = await this.clientsService.getClients(search);
-    this.clients = clients;
-    return clients;
+    try {
+      const clients: any = await this.clientsService.getClients(search);
+      this.clients = clients;
+      return clients;
+    } catch (error) {}
   }
 
   async getVehicles() {
-    if (this.selectedClient) {
-      const vehicles: any = await this.vehiclesService.getVehiclesByClientId(
-        this.selectedClient
-      );
-      this.vehicles = vehicles;
-      return vehicles;
-    }
+    try {
+      if (this.selectedClient) {
+        const vehicles: any = await this.vehiclesService.getVehiclesByClientId(
+          this.selectedClient
+        );
+        this.vehicles = vehicles;
+        return vehicles;
+      }
 
-    this.vehicles = [];
-    this.selectedVehicle = null;
+      this.vehicles = [];
+      this.selectedVehicle = null;
+    } catch (error) {
+      this.toastr.error('Erro ao buscar veículos', 'Erro!');
+    }
   }
 
   async addVehicle() {
-    if (this.selectedClient && this.selectedVehicle) {
-      const res: any = await this.vehiclesService.addVehicle({
-        client: {
-          id: this.selectedClient,
-        },
-        vehicle: {
-          id: this.selectedVehicle,
-        },
-      });
-      return res;
+    try {
+      if (this.selectedClient && this.selectedVehicle) {
+        await this.historyService.entranceVehicle({
+          client: {
+            id: this.selectedClient,
+          },
+          vehicle: {
+            id: this.selectedVehicle,
+          },
+        });
+        this.toastr.success('Veículo adicionado com sucesso', 'Sucesso!');
+        this.onCreate.emit();
+        this.closeModal();
+      }
+    } catch (error) {
+      this.toastr.error('Erro ao adicionar veículo', 'Erro!');
     }
   }
 

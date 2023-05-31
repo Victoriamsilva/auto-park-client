@@ -19,8 +19,8 @@
         <td>{{ client.cpf }}</td>
         <td>{{ client.email }}</td>
         <td class="justify-center">
-          <button class="btn-ghost" (click)="openModalEdit(client)">
-            Editar
+          <button class="btn-ghost" (click)="redirectClientInfo(client.id)">
+            Ver cliente
           </button>
           <button class="btn-danger" (click)="openModalRemove(client.id)">
             Excluir

@@ -1,0 +1,10 @@
+ul {
+  @apply flex border-b border-gray;
+  h1 {
+    @apply text-2xl cursor-pointer;
+  }
+
+  .active {
+    @apply text-primary;
+  }
+}

@@ -23,11 +23,8 @@ export class AuthenticationComponent {
     private authService: AuthenticationService
   ) {
     this.form = this.formBuilder.group({
-      email: new FormControl('victoria@gmail.com', [
-        Validators.required,
-        Validators.email,
-      ]),
-      password: new FormControl('12345', [
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [
         Validators.required,
         Validators.minLength(5),
       ]),

@@ -4,10 +4,12 @@
 </div>
 <nav>
   <ul>
-    <li *ngFor="let item of navLinks">
-      <a [routerLink]="item.path" routerLinkActive="active">
+    <li [routerLink]="item.path" *ngFor="let item of navLinks">
+      <a routerLinkActive="active">
         {{ item.name }}
       </a>
     </li>
   </ul>
 </nav>
+
+<button (click)="logout()" class="border-0">Sair</button>

@@ -4,6 +4,7 @@ import * as moment from 'moment';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { ModalAddVehicleComponent } from 'src/app/shared/components/modal-add-vehicle/modal-add-vehicle.component';
 import { ModalExitVehicleComponent } from 'src/app/shared/components/modal-exit-vehicle/modal-exit-vehicle.component';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-home',
@@ -15,12 +16,21 @@ export class HomeComponent {
 
   constructor(
     private vehiclesService: VehiclesService,
-    private modalService: BsModalService
+    private modalService: BsModalService,
+    private toastr: ToastrService
   ) {}
 
   async ngOnInit() {
-    const res: any = await this.vehiclesService.getVehiclesParked();
-    this.vehiclesParked = res;
+    await this.getVehiclesParked();
+  }
+
+  async getVehiclesParked() {
+    try {
+      const res: any = await this.vehiclesService.getVehiclesParked();
+      this.vehiclesParked = res;
+    } catch (error) {
+      this.toastr.error('Erro ao buscar veículos', 'Erro!');
+    }
   }
 
   getBeginHour(date: string) {
@@ -36,19 +46,20 @@ export class HomeComponent {
     const endDate = moment();
     const duration = moment.duration(endDate.diff(beginDate)).asHours();
     const price = duration * priceHour;
-    console.log(price);
     return price.toFixed(2);
   }
 
   openModal() {
-    this.modalService.show(ModalAddVehicleComponent, {
+    const modalRef = this.modalService.show(ModalAddVehicleComponent, {
       class: 'custom-modal-sm',
+    });
+    modalRef.content?.onCreate.subscribe(() => {
+      this.getVehiclesParked();
     });
   }
 
   async exitVehicle(vehicle: any) {
-    console.log(vehicle);
-    this.modalService.show(ModalExitVehicleComponent, {
+    const modalRef = this.modalService.show(ModalExitVehicleComponent, {
       class: 'custom-modal-sm',
       initialState: {
         data: {
@@ -58,6 +69,9 @@ export class HomeComponent {
           ...vehicle,
         },
       },
+    });
+    modalRef.content?.onExit.subscribe(() => {
+      this.getVehiclesParked();
     });
   }
 }

@@ -8,5 +8,6 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 export class HeaderComponent {
   @Input() title: string = '';
   @Input() buttonLabel: string = '';
+  @Input() hasButton: boolean = true;
   @Output() onClick = new EventEmitter();
 }

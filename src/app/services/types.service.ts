@@ -17,4 +17,12 @@ export class TypesService {
   async createType(type: any) {
     return this.http.post(`${this.baseUrl}/types`, type);
   }
+
+  async editType(id: number, type: any) {
+    return this.http.patch(`${this.baseUrl}/types/${id}`, type);
+  }
+
+  async removeType(id: number) {
+    return this.http.delete(`${this.baseUrl}/types/${id}`);
+  }
 }

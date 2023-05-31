@@ -1,0 +1,72 @@
+<div class="custom-modal">
+  <header class="custom-modal-header">
+    <h5>Veículo</h5>
+  </header>
+
+  <main class="custom-modal-body">
+    <h1>Criar veículo</h1>
+
+    <form [formGroup]="form">
+      <fieldset
+        [class.hasError]="vehicleTypeId.touched && vehicleTypeId.errors"
+      >
+        <label class="label">Tipo de veículo</label>
+        <ng-select
+          formControlName="vehicleTypeId"
+          [items]="types"
+          bindLabel="name"
+          bindValue="id"
+          appendTo="body"
+          formControlName="vehicleTypeId"
+        ></ng-select>
+        <ng-container *ngIf="vehicleTypeId.errors">
+          <span
+            class="error"
+            *ngIf="vehicleTypeId.touched && vehicleTypeId.hasError('required')"
+          >
+            Tipo de veículo é obrigatório
+          </span>
+        </ng-container>
+      </fieldset>
+
+      <fieldset [class.hasError]="name.touched && name.errors">
+        <label class="label">Modelo do veículo</label>
+        <input formControlName="name" class="input" />
+        <ng-container *ngIf="name.errors">
+          <span class="error" *ngIf="name.touched && name.hasError('required')">
+            Modelo é obrigatório
+          </span>
+        </ng-container>
+      </fieldset>
+
+      <fieldset [class.hasError]="licensePlate.touched && licensePlate.errors">
+        <label class="label">Placa do veículo</label>
+        <input formControlName="licensePlate" class="input" />
+        <ng-container *ngIf="licensePlate.errors">
+          <span
+            class="error"
+            *ngIf="licensePlate.touched && licensePlate.hasError('required')"
+          >
+            Placa do veículo é obrigatório
+          </span>
+        </ng-container>
+      </fieldset>
+
+      <fieldset class="flex">
+        <label class="label">Veiculo ficará estacionado?</label>
+        <span>
+          <input
+            class="w-8 cursor-pointer"
+            formControlName="isParked"
+            type="checkbox"
+          />
+        </span>
+      </fieldset>
+    </form>
+  </main>
+
+  <footer class="custom-modal-footer">
+    <button class="btn-secondary" (click)="closeModal()">Cancelar</button>
+    <button class="btn-primary" (click)="createVehicle()">Adicionar</button>
+  </footer>
+</div>

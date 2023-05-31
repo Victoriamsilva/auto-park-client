@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpService } from './http.service';
-import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +10,7 @@ export class VehiclesService {
   baseUrl = environment.api;
   eventsApi = environment.eventsApi;
 
-  constructor(private http: HttpService, private router: Router) {}
+  constructor(private http: HttpService) {}
 
   async getVehiclesParked() {
     return this.http.get(`${this.historyApi}/history/parked`);
@@ -21,7 +20,16 @@ export class VehiclesService {
     return this.http.get(`${this.baseUrl}/vehicles/${clientId}`);
   }
 
-  async addVehicle(data: any) {
-    return this.http.post(`${this.historyApi}/history`, data);
+  async createVehicle(data: any) {
+    return this.http.post(`${this.eventsApi}/create-vehicle`, data);
+  }
+
+  async editVehicle(id: any, data: any) {
+    console.log(id, data);
+    return this.http.patch(`${this.baseUrl}/vehicles/${id}`, data);
+  }
+
+  async deleteVehicle(vehicleId: string) {
+    return this.http.delete(`${this.baseUrl}/vehicles/${vehicleId}`);
   }
 }

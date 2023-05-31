@@ -18,6 +18,10 @@ export class ClientsService {
     return this.http.get(`${this.baseUrl}/clients`);
   }
 
+  async getClientById(id: number) {
+    return this.http.get(`${this.baseUrl}/clients/${id}`);
+  }
+
   async createClient(client: any) {
     return this.http.post(`${this.baseUrl}/clients`, client);
   }
